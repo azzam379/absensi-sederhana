@@ -17,7 +17,7 @@ Logika API dirancang ulang dan dibungkus menjadi fungsi-fungsi modular yang bisa
 Bentuk aplikasi tidak ditumpuk menjadi naskah 1 file raksasa (monolitik), melainkan mematuhi standar *Separation of Concern*. Mulai dari memisahkan total lapisan Visual/Klien (`/frontend`) dan lapisan logika Peladen (`/api`). Menukik pada ranah Backend-nya pun, alur dipecah rapi secara modular: Pemetaan Rute (`routers/`), Penghubung Database (`database.py`), Definisi Model Entitas (`models.py`), serta Skema Validasi (`schemas.py`). 
 
 ## 5. Menggunakan Library
-Alih-alih menemukan kembali roda sejak zaman purbakala, integrasi ini secara krusial melibatkan pustaka / *packages* modern tervalidasi global:
+Integrasi ini secara krusial melibatkan pustaka / *packages* modern tervalidasi global:
 - **`fastapi`** dan **`uvicorn`** (Pondasi Web Service)
 - **`sqlalchemy`** (Penerjemah Objek-Relasional SQL)
 - **`pydantic`** (Benteng Validasi Struktur Data ketat)
@@ -27,7 +27,7 @@ Alih-alih menemukan kembali roda sejak zaman purbakala, integrasi ini secara kru
 Kendati menghindari tulisan skrip SQL murni (yang dianggap rawan bocor/*Injection* di era kini), aplikasi tetap menjaga kepatuhan kaidah DML/DDL ketat dari SQL secara transparan berbasis **ORM (Object-Relational Mapping)**. Perintah inisiasi standar `SELECT, INSERT, UPDATE, DELETE` diterjemahkan cermat ke dalam tata bahasa SQLAlchemy yang jauh lebih bersih via PostgreSQL bawaan (contoh: `db.query(models.Siswa).add(...)`).
 
 ## 7. Menerapkan Akses Basis Data
-Meningkatkan tantangan dari pedoman awal (melawan ketergantungan SQLite luring), aplikasi ini dipresentasikan memakai jalur transmisi internet langsung. Koneksi basis daya tersambung lintas benua mencapai awan **Supabase/Neon.tech PostgreSQL**, mengatasi batasan keabadian *file serverless*. Semua diverifikasi kokoh menggunakan konfigurasi deteksi *Remote URL String* standar di `database.py`.
+Meningkatkan tantangan dari pedoman awal (melawan ketergantungan SQLite luring), aplikasi ini dipresentasikan memakai jalur transmisi internet langsung. Koneksi basis daya tersambung lintas benua mencapai awan **Neon.tech PostgreSQL**, mengatasi  *file serverless*. Semua diverifikasi  menggunakan konfigurasi deteksi *Remote URL String* standar di `database.py`.
 
 ## 8. Mengimplementasikan Algoritma
 Logika pemfilteran diterapkan pada algoritma asinkron pengunduhan tabel rekapitulasi harian. Seluruh interaksi rekam data juga difilter oleh pintu logika IF-ELSE (permasalahan Foreign Key Check): Sebelum merestui perintah input kehadiran absensi, algoritma Backend secara proaktif memeriksa eksistensi fisik Nomor ID sang Siswa—menolak keras proses jika Siswa terbukti fiktif, menyuguhkan integritas basis data yang absolut.
