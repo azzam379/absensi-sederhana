@@ -1,0 +1,94 @@
+<!-- File: frontend/index.html -->
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Absensi UJK JP</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Absensi Sederhana</h1>
+            <p>Portofolio Musa-220103240</p>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <h2>1. Registrasi Siswa</h2>
+                <form id="form-siswa">
+                    <label>Nama Siswa</label>
+                    <input type="text" id="nama" placeholder="Contoh: Budi" required>
+                    <label>Kelas</label>
+                    <input type="text" id="kelas" placeholder="Contoh: 10 TKJ" required>
+                    <button type="submit">+ Tambah Siswa</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>2. Input Presensi</h2>
+                <form id="form-absensi">
+                    <label>Siswa</label>
+                    <select id="siswa_id" required></select>
+                    <label>Tanggal</label>
+                    <input type="date" id="tanggal" required>
+                    <label>Status</label>
+                    <select id="status" required>
+                        <option value="Hadir">Hadir</option>
+                        <option value="Izin">Izin</option>
+                        <option value="Sakit">Sakit</option>
+                        <option value="Alfa">Alfa</option>
+                    </select>
+                    <label>Keterangan</label>
+                    <input type="text" id="keterangan" placeholder="Alasan (Opsional)">
+                    <button type="submit">Catat Absen</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card" style="margin-bottom:2rem;">
+            <h2>Data Murid Terdaftar</h2>
+            <table id="table-siswa">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Kelas</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Log Absensi Keseluruhan</h2>
+            <table id="table-absensi">
+                <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Siswa</th>
+                        <th>Kehadiran</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Hubungkan Logika JavaScript -->
+    <script src="js/api.js"></script>
+    <script src="js/siswa.js"></script>
+    <script src="js/absensi.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSiswa();
+            loadAbsensi();
+        });
+    </script>
+</body>
+
+</html>

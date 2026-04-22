@@ -1,0 +1,20 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Pytest / Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local Database
+*.db
+*.sqlite3
+
+# Environtments and Vercel Configs
+.env
+.venv/
+env/
+venv/
+.vercel
