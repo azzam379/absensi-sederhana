@@ -62,4 +62,4 @@ Aplikasi tidak ditetes kualifikasinya secara manual asal raba, melainkan memilik
 *   **Langkah Demonstrasi Pengetesan (Via Terminal):**
     1. Buka Terminal/PowerShell dan pastikan Anda berada di direktori utama `absensi-sederhana`.
     2. Ketikkan perintah pengujian: `python -m pytest api/tests/ -v` lalu tekan Enter.
-    3. Komputer akan melakukan simulasi otomatis. Jika mesin mencetak tulisan berwarna hijau **"100% PASSED"**, itu merupakan bukti konkret (hitam di atas putih) di mata penguji bahwa unit fungsional kode Anda telah terverifikasi aman.
+    3. Komputer akan melakukan simulasi otomatis. Jika mesin mencetak tulisan berwarna hijau **"100% PASSED"**, itu merupakan bukti konkret (hitam di atas putih) bahwa unit fungsional kode Anda telah terverifikasi aman.
