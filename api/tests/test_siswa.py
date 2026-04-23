@@ -4,8 +4,8 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from backend.main import app
-from backend.database import Base, get_db
+from api.main import app
+from api.database import Base, get_db
 
 # 1. Setup Database Khusus Testing
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test_absensi.db"
@@ -32,7 +32,7 @@ client = TestClient(app)
 
 def test_tambah_siswa():
     response = client.post(
-        "/siswa/",
+        "/api/siswa/",
         json={"nama": "Budi Santoso", "kelas": "X RPL 1"}
     )
     assert response.status_code == 200
@@ -41,13 +41,13 @@ def test_tambah_siswa():
     assert "id" in data
 
 def test_ambil_semua_siswa():
-    response = client.get("/siswa/")
+    response = client.get("/api/siswa/")
     assert response.status_code == 200
     # Pastikan kembalian data berupa List (Array)
     assert isinstance(response.json(), list) 
 
 def test_siswa_tidak_ditemukan():
     # Mengetes cara mengatasi error jika ID yang dicari ngawur
-    response = client.delete("/siswa/999")
+    response = client.delete("/api/siswa/999")
     assert response.status_code == 404
 

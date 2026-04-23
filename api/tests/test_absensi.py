@@ -3,12 +3,12 @@ import pytest
 from datetime import date
 
 # Pinjam 'client' simulasi API dari file test_siswa
-from backend.tests.test_siswa import client 
+from api.tests.test_siswa import client 
 
 def test_tambah_absensi():
     # 1. Pertama, buat 1 siswa eksperimen agar ada ID yang bisa diabsen
     siswa_response = client.post(
-        "/siswa/",
+        "/api/siswa/",
         json={"nama": "Siti Aminah", "kelas": "XI TKJ 2"}
     )
     siswa_id = siswa_response.json()["id"]
@@ -16,7 +16,7 @@ def test_tambah_absensi():
     # 2. Tes menembak API absensi
     today = date.today().isoformat() # Convert "Tahun-Bulan-Tanggal"
     response = client.post(
-        "/absensi/",
+        "/api/absensi/",
         json={
             "siswa_id": siswa_id,
             "tanggal": today,
